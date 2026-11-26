@@ -1,0 +1,13 @@
+
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Starting website deployment..."
+      - aws s3 sync . s3://YOUR-BUCKET-NAME --delete --exclude ".git/*" --exclude "buildspec.yml"
+      - echo "Website deployed successfully!"
+
+artifacts:
+  files:
+    - '**/*'
